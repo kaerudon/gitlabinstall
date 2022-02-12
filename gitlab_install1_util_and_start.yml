@@ -29,3 +29,16 @@
         name: postfix
         enabled: true
         state: started
+        
+    - name: postfix enabled and running
+   　 replace:
+        path: /etc/postfix/main.cf
+        regexp: '# header_checks = pcre:/etc/postfix/header_checks'
+        replace: 'header_checks = pcre:/etc/postfix/header_checks'
+        backup: yes # backupする
+      
+    - name: edit /etc/postfix/header_checks
+      lineinfile:
+        path: /etc/postfix/header_checks
+        line: '/^Received:/ IGNORE'
+
