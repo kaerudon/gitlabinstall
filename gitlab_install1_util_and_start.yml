@@ -1,0 +1,31 @@
+---
+- name: yum install curl policycoreutils openssh-server nfs-client
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update packages
+      yum:
+        name:
+          - curl
+          - policycoreutils
+          - openssh-server
+          - postfix
+          - nfs-utils
+          - glibc
+          - libgcc
+          - zlib
+          - bzip2
+          - libuuid
+        state: latest
+
+    - name: openssh-server enabled and running
+      service:
+        name: sshd
+        enabled: true
+        state: started
+    
+    - name: postfix enabled and running
+      service:
+        name: postfix
+        enabled: true
+        state: started
