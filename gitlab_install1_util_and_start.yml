@@ -33,7 +33,7 @@
     - name: postfix enabled and running
    　 replace:
         path: /etc/postfix/main.cf
-        regexp: '# header_checks = pcre:/etc/postfix/header_checks'
+        regexp: '#header_checks = pcre:/etc/postfix/header_checks'
         replace: 'header_checks = pcre:/etc/postfix/header_checks'
         backup: yes # backupする
       
