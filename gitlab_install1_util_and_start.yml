@@ -30,13 +30,11 @@
         enabled: true
         state: started
         
-    - name: postfix enabled and running
-   　 replace:
-        path: /etc/postfix/main.cf
-        regexp: '#header_checks = pcre:/etc/postfix/header_checks'
-        replace: 'header_checks = pcre:/etc/postfix/header_checks'
-        backup: yes # backupする
-      
+   #ログイン後手動でpostfixの/etc/postfix/main.cfを編集し[#header_checks = pcre:/etc/postfix/header_checks]をコメントアウトし保存
+        #path: /etc/postfix/main.cf
+        #regexp: '#header_checks = pcre:/etc/postfix/header_checks'
+        #replace: 'header_checks = pcre:/etc/postfix/header_checks'
+        
     - name: edit /etc/postfix/header_checks
       lineinfile:
         path: /etc/postfix/header_checks
